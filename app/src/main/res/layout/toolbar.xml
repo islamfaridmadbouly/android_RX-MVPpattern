@@ -1,0 +1,53 @@
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/darker_gray"
+    android:contentInsetStart="0dp"
+    app:popupTheme="@style/Theme.AppCompat"
+    app:theme="@style/AppTheme">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:freezesText="true"
+            android:gravity="center"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
+            android:text="@string/app_name"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="@dimen/activity_text_size_large" />
+
+        <EditText
+            android:id="@+id/language_editField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:hint="@string/enter_lang"
+            android:imeOptions="actionDone"
+            android:textColor="@android:color/holo_red_light"
+            android:textColorHint="@android:color/holo_red_light"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/enter_language_imageview"
+            android:layout_width="@dimen/small_icon_width"
+            android:layout_height="@dimen/small_icon_height"
+            android:layout_alignParentRight="true"
+            android:scaleType="fitXY"
+            android:src="@mipmap/search"
+            android:visibility="gone" />
+    </RelativeLayout>
+</android.support.v7.widget.Toolbar>

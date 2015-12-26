@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">"GitubRepositories "</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="all_repos_endpoint_url">https://api.github.com/search</string>
+    <string name="repo_queries_endpoint_url">https://api.github.com/repos/</string>
+    <string name="top_3_issues">The Newest Three Issues</string>
+    <string name="top_3_contributors">The Top Three contributors </string>
+    <string name="enter_lang">Enter Language </string>
+
+</resources>
