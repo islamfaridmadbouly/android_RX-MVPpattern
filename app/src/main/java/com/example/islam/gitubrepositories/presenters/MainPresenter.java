@@ -1,15 +1,11 @@
 package com.example.islam.gitubrepositories.presenters;
 
-import android.util.Log;
-
 import com.example.islam.gitubrepositories.model.GithubService;
 import com.example.islam.gitubrepositories.model.pojos.AllRepos;
 import com.example.islam.gitubrepositories.view.MainView;
 
 import java.util.LinkedHashMap;
-import java.util.List;
 
-import rx.Scheduler;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;

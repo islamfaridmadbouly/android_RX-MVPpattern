@@ -6,9 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -17,7 +15,6 @@ import android.widget.Toast;
 import com.example.islam.gitubrepositories.R;
 import com.example.islam.gitubrepositories.model.pojos.RepoItem;
 import com.example.islam.gitubrepositories.presenters.MainPresenter;
-import com.example.islam.gitubrepositories.view.DividerItemDecoration;
 import com.example.islam.gitubrepositories.view.MainView;
 import com.example.islam.gitubrepositories.view.adapters.LangReposAdapter;
 
@@ -25,7 +22,6 @@ import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
-import org.w3c.dom.Text;
 
 import java.util.List;
 

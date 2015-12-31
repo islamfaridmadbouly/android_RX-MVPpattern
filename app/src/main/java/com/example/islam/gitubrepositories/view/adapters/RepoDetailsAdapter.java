@@ -14,6 +14,7 @@ import com.example.islam.gitubrepositories.model.pojos.Issue;
 import com.example.islam.gitubrepositories.model.pojos.RepoItem;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RepoDetailsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -23,8 +24,8 @@ public class RepoDetailsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     final int ISSUES_TYPE = 2;
         final int CONTRIBUTION_DIFFERENCE = 2;
     final int ISSUES_DIFFERENCE = 6;
-    List<Issue> issues;
-    List<Contributor> contributors;
+    List<Issue> issues = new ArrayList<>();
+    List<Contributor> contributors = new ArrayList<>();
     RepoItem repoItem;
     private Context mContext;
 

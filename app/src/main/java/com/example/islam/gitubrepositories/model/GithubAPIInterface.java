@@ -7,7 +7,6 @@ import com.example.islam.gitubrepositories.model.pojos.Issue;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-import retrofit.Callback;
 import retrofit.http.GET;
 import retrofit.http.Path;
 import retrofit.http.Query;

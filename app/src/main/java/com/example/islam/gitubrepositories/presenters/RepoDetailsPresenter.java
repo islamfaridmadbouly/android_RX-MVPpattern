@@ -1,17 +1,16 @@
 package com.example.islam.gitubrepositories.presenters;
 
-import android.util.Log;
-
 import com.example.islam.gitubrepositories.model.GithubService;
 import com.example.islam.gitubrepositories.model.pojos.Contributor;
 import com.example.islam.gitubrepositories.model.pojos.Issue;
 import com.example.islam.gitubrepositories.view.RepoDetailsView;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 /**
@@ -25,34 +24,42 @@ public class RepoDetailsPresenter {
         mRepoDetailsView = repoDetailsView;
     }
 
-    public void loadIssues(String endPoint,String userLogin,String name,String sort) {
-        mRepoDetailsView.showIssuesProgress();
+    public void loadIssues(String endPoint, String userLogin, String name, String sort, int numberOfNeededElements) {
         mGithubService = GithubService.getInstance(endPoint);
-        mGithubService.issues(userLogin,name,sort).subscribeOn(Schedulers.io()).
-                observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<List<Issue>>() {
+        mGithubService.issues(userLogin, name, sort).subscribeOn(Schedulers.io()).
+                observeOn(AndroidSchedulers.mainThread()).flatMap(new Func1<List<Issue>, Observable<Issue>>() {
+            @Override
+            public Observable<Issue> call(List<Issue> issues) {
+                return Observable.from(issues);
+            }
+        }).take(numberOfNeededElements).subscribe(new Subscriber<Issue>() {
             @Override
             public void onCompleted() {
-                mRepoDetailsView.hideIssuesProgress();
+
             }
 
             @Override
             public void onError(Throwable e) {
-                Log.e("", "");
+
             }
 
             @Override
-            public void onNext(List<Issue> issues) {
-
-                mRepoDetailsView.setIssues(issues.size() > 3 ? new ArrayList<>(issues.subList(0, 3)) : issues);
+            public void onNext(Issue issue) {
+                mRepoDetailsView.setNewIssue(issue);
             }
         });
     }
 
-    public void loadContributors(String endPoint,String userLogin,String name) {
+    public void loadContributors(String endPoint, String userLogin, String name,int numberOfContributions) {
         mRepoDetailsView.showContributorsProgress();
         mGithubService = GithubService.getInstance(endPoint);
-        mGithubService.contributors(userLogin,name).subscribeOn(Schedulers.io()).
-                observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber<List<Contributor>>() {
+        mGithubService.contributors(userLogin, name).subscribeOn(Schedulers.io()).
+                observeOn(AndroidSchedulers.mainThread()).flatMap(new Func1<List<Contributor>, Observable<Contributor>>() {
+            @Override
+            public Observable<Contributor> call(List<Contributor> contributors) {
+                return Observable.from(contributors);
+            }
+        }).take(numberOfContributions).subscribe(new Subscriber<Contributor>() {
             @Override
             public void onCompleted() {
 
@@ -64,8 +71,8 @@ public class RepoDetailsPresenter {
             }
 
             @Override
-            public void onNext(List<Contributor> contributors) {
-                mRepoDetailsView.setContributors(contributors.size() > 3 ? new ArrayList<>(contributors.subList(0, 3)) : contributors);
+            public void onNext(Contributor contributor) {
+                mRepoDetailsView.setContributors(contributor);
             }
         });
     }
